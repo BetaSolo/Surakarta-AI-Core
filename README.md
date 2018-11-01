@@ -1,6 +1,6 @@
-# Surakarta AI
+# Surakarta AI Core
 
-Some implementations of AI for playing Surakarta chess by MaxXing.
+Some implementations of AI for playing Surakarta chess.
 
 ## Directories
 
