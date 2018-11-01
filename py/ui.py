@@ -71,6 +71,7 @@ def ui_main(action_file=None, ai_first=False, depth=50, breadth=10):
             if action is None:
                 break
         board.apply_action(action)
+    print_board(board)
     print('game over', end='')
     if board.status == GameStatus.RedWon:
         print(', red won', end='')
