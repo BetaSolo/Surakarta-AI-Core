@@ -30,6 +30,11 @@ class Node(object):
     def action(self):
         return self.__action
 
+    @property
+    def win_prob(self):
+        return self.__won_game / self.__total_game \
+            if self.__total_game else 0
+
     def search(self, depth=20, breadth=3):
         target = status.get_won_status(self.__status.status)
         for _ in range(depth):

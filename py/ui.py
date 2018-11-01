@@ -40,8 +40,9 @@ def read_action(file_name=None):
     return action
 
 
-def write_action(action, file_name=None):
-    print(action, '\n')
+def write_action(node, action, file_name=None):
+    print(action)
+    print('winning probability: %.2f%%\n' % (100 * node.win_prob))
     if file_name is not None:
         with open(file_name, 'w') as f:
             f.write(str(action))
@@ -65,7 +66,7 @@ def ui_main(action_file=None, ai_first=False, depth=50, breadth=10):
         if board.status == ai_status:
             ai = Node(board)
             action = ai.search(depth, breadth)
-            write_action(action, action_file)
+            write_action(ai, action, action_file)
         else:
             action = read_action(action_file)
             if action is None:
