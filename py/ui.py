@@ -6,12 +6,7 @@ from status import GameStatus, Direction
 
 def read_action(file_name=None):
     # read input
-    try:
-        cmd = input()
-    except EOFError:
-        return None
-    except KeyboardInterrupt:
-        return None
+    cmd = input()
     # read from file
     if file_name is not None:
         with open(file_name, 'r') as f:
@@ -69,6 +64,9 @@ def ui_main(action_file=None, ai_first=False, depth=50, breadth=10):
         else:
             try:
                 action = read_action(action_file)
+            except (EOFError, KeyboardInterrupt):
+                # end of input
+                return
             except:
                 action = None
             if action is None:
