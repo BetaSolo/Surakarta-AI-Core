@@ -35,7 +35,6 @@ def read_action(file_name=None):
         action = Action(int(cmd[1]), int(cmd[2]),
                         eat_pos=(int(cmd[3]), int(cmd[4])))
     else:
-        print('invalid command')
         action = None
     return action
 
@@ -68,9 +67,13 @@ def ui_main(action_file=None, ai_first=False, depth=50, breadth=10):
             action = ai.search(depth, breadth)
             write_action(ai, action, action_file)
         else:
-            action = read_action(action_file)
+            try:
+                action = read_action(action_file)
+            except:
+                action = None
             if action is None:
-                break
+                print('invalid command')
+                continue
         board.apply_action(action)
     print_board(board)
     print('game over', end='')
